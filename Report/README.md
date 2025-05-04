@@ -1,6 +1,6 @@
 # Report: Fake News Detection Using ISOT Dataset
 
-## Aabstract
+## Abstract
 
 This study replicates the fake news detection baseline introduced by Hoy and Koulouri (2022) using the ISOT dataset. Five distinct text representation pipelines—Bag of Words, TF-IDF, Word2Vec (via spaCy), DistilBERT, and Linguistic Cues—are evaluated across six supervised classification algorithms under a stratified 2-fold cross-validation framework. The replication results closely mirror the original benchmarks, with ensemble classifiers leveraging TF-IDF and Bag of Words features achieving F1-scores consistently above 0.99. To assess model generalization beyond in-domain conditions, a novel source-bias removal experiment is introduced, simulating distributional shifts between training and testing sets. This experimental setup reveals notable performance degradation in most pipelines, underscoring the presence of source-specific biases within the dataset. The findings reinforce the importance of evaluating fake news detection systems under conditions that more accurately reflect real-world deployment scenarios.
 
@@ -45,16 +45,12 @@ Each feature-classifier combination was tested under standard conditions to repr
 ### 2. Source-Bias Removal
 To test model generalization, a new setup was created where portions of the *Reuters* data were excluded from training. This revealed performance drops across all pipelines, confirming the existence of **source-label shortcuts** in the ISOT dataset.
 
----
-
 ## Visualizations
 
 - Document length distributions
 - Word clouds (real vs. fake)
 - Most frequent words per class
 - Bar plots comparing F1, Accuracy, Precision, and Recall under random vs. source-biased splits
-
-Plots are available in the `figures/` directory.
 
 
 ## Conclusion
