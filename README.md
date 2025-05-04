@@ -6,54 +6,6 @@ This project is a replication and extension of the baseline proposed by Hoy & Ko
 
 The project aims to replicate and stress-test the fake news detection pipelines evaluated by Hoy & Koulouri (2022). Beyond in-domain validation, a novel **source-bias removal experiment** is introduced to simulate real-world generalization challenges by decoupling source identity from label information.
 
----
-
-## Dataset
-
-- **ISOT Fake News Dataset**  
-  - **Real news** from Reuters.com  
-  - **Fake news** from unreliable news sources  
-  - Preprocessed to remove stopwords, punctuation, and perform lemmatization  
-  - Only the `text` field was used (no titles, dates, or subjects)
-
----
-
-## Algorithms
-
-### Feature Pipelines
-
-Five text representation pipelines were explored:
-
-- Bag of Words (`CountVectorizer`)
-- TF-IDF (`TfidfVectorizer`)
-- Word2Vec (`spaCy` vectors)
-- DistilBERT (Transformers-based)
-- Linguistic Cues (e.g. punctuation density, pronoun ratio, etc.)
-
-### Classifiers
-
-Each representation was evaluated using six classifiers:
-
-- Logistic Regression
-- Support Vector Machine (SVM)
-- Random Forest
-- Gradient Boosting
-- AdaBoost
-- Neural Network (MLP)
-
-All evaluations used **stratified 2-fold cross-validation**.
-
----
-
-## Experiments
-
-### 1. Paper Replication
-Each feature-classifier combination was tested under standard conditions to reproduce Hoy & Koulouri’s results. Ensemble models using TF-IDF and BoW achieved **F1 > 0.99**.
-
-### 2. Source-Bias Removal
-To test model generalization, a new setup was created where portions of the *Reuters* data were excluded from training. This revealed performance drops across all pipelines, confirming the existence of **source-label shortcuts** in the ISOT dataset.
-
----
 
 # Project Overview: Fake News Detection using ISOT Dataset
 
@@ -61,7 +13,6 @@ This project replicates and expands upon the fake news detection baseline introd
 
 The paper also introduces a source-bias removal experiment to simulate domain shift by withholding all Reuters news (true news) from the training set. This second part analyzes model generalization beyond standard random splits and reveals significant performance drops, reinforcing the importance of distribution-aware evaluation in fake news detection research.
 
----
 
 # Code Overview: `FakeNewsDetection.ipynb`
 
@@ -94,15 +45,11 @@ Generates:
 - Summary tables per feature+classifier combination
 - Interpretations of generalization gaps
 
----
-
 ## For questions or contributions:  
 
 Julian David Rojas Rojas  
 julian.rojas@ensae.fr  
 MSc&T Data and Economics for Public Policy – École Polytechnique / ENSAE
-
----
 
 ## Acknowledgments
 
